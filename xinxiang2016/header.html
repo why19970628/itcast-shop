@@ -1,0 +1,154 @@
+<!--
+	时间：2018-07-29
+	描述：菜单栏
+-->
+<script>
+	function logout(){
+		//发请求 告诉服务器销毁session完事了
+//		$.ajax({
+//			type:"post",
+//			url:"http://api.xinxiang2016.com:8082/user?func=logout",
+//			xhrFields: {
+//		          withCredentials: true
+//		    },
+//		    success:function(){
+//		    		//不会失败 肯定ok
+//		    		//重新刷新页面
+//		    		location.reload();
+//		    }
+			
+//	});
+	HM.ajax("/user?func=logout",null,function(response){
+				//直接由字符串转换好对象可以直接使用
+				//不会失败 肯定ok
+		    		//重新刷新页面
+		    		location.reload();
+		});
+	}
+	
+	$(function(){
+		
+		//询问服务器 我是否处于登录状态
+//		$.ajax({
+//			type:"post",
+//			url:"http://api.xinxiang2016.com:8082/user?func=myname",
+//			xhrFields: {
+//		          withCredentials: true
+//		    },
+//			success:function(response){
+//				var responseObj=eval("("+response+")");
+//				//判断 到底返回你名字没有
+//				if(responseObj.code==1){
+//					var nickName=responseObj.data;
+//					//处理显示位置
+//					$("#login-menu").empty();
+//					var html='<li>'+nickName+'欢迎您</li>';
+//					html+='<li><a href="javascript:;" onclick="logout()">退出登录</a></li>';
+//					html+='<li><a href="http://www.xinxiang2016.com:8848/xinxiang2016/view/cart/list.html">购物车</a></li>';
+//					html+='<li><a href="http://www.xinxiang2016.com:8848/xinxiang2016/view/order/list.html">我的订单</a></li>';
+//					$("#login-menu").html(html);
+//				}else{
+//					//do nothing....
+//					//alert("暂未登录!");
+//				}
+//				
+//			}
+//		});
+		HM.ajax("/user?func=myname",null,function(response){
+			if(response.code==1){
+					var nickName=response.data;
+					//处理显示位置
+					$("#login-menu").empty();
+					var html='<li>'+nickName+'欢迎您</li>';
+					html+='<li><a href="javascript:;" onclick="logout()">退出登录</a></li>';
+					html+='<li><a href="http://www.xinxiang2016.com:8848/xinxiang2016/view/cart/list.html">购物车</a></li>';
+					html+='<li><a href="http://www.xinxiang2016.com:8848/xinxiang2016/view/order/list.html">我的订单</a></li>';
+					$("#login-menu").html(html);
+				}else{
+					//do nothing....
+					//alert("暂未登录!");
+				}
+		})
+		
+		//页面加载成功以后  访问服务器加载分类信息
+		HM.ajax("/category?func=list",null,function(vo){
+			var categories=vo.data;
+			var html="";
+			for (cate of categories) {
+				var cname=cate.cname;
+				var cid=cate.cid;
+				//拼接标签
+				//<li><a href="#">电脑办公</a></li>
+				html+='<li><a href="http://www.xinxiang2016.com:8848/xinxiang2016/view/product/list.html?cid='+cid+'">'+cname+'</a></li>';
+			}
+			$("#cate_list").html(html);
+		})
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	})
+	
+	
+	
+	
+</script>
+<div class="container-fluid">
+	<div class="col-md-4">
+		<img src="http://www.xinxiang2016.com:8848/xinxiang2016/resources/img/logo.png" />
+	</div>
+	<div class="col-md-5">
+		<img src="http://www.xinxiang2016.com:8848/xinxiang2016/resources/img/header.png" />
+	</div>
+	<div class="col-md-3" style="padding-top:20px">
+		<ol class="list-inline" id="login-menu">
+			<li><a href="http://www.xinxiang2016.com:8848/xinxiang2016/login.html">登录</a></li>
+			<li><a href="http://www.xinxiang2016.com:8848/xinxiang2016/register.html">注册</a></li>
+			<li><a href="http://www.xinxiang2016.com:8848/xinxiang2016/view/cart/list.html">购物车</a></li>
+			<li><a href="http://www.xinxiang2016.com:8848/xinxiang2016/view/cart/list.html">我的订单</a></li>
+		</ol>
+	</div>
+</div>
+<!--
+	时间：2018-07-29
+	描述：导航条
+-->
+<div class="container-fluid">
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="http://www.xinxiang2016.com:8848/xinxiang2016/index.html">首页</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav" id="cate_list">
+					
+					
+				</ul>
+				<form class="navbar-form navbar-right" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search">
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>
+
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+</div>

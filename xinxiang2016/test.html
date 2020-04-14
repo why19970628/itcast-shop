@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="resources/js/jquery-1.11.3.min.js" ></script>
+		<script>
+			function send(){
+				//发送ajax请求
+				$.ajax({
+					type:"get",
+					url:"http://api.xinxiang2016.com:8080",
+					success:function(data){
+						alert(data);
+					}
+				});
+				
+				
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<input type="button" value="点我发送ajax"  onclick="send();"/>
+	</body>
+</html>

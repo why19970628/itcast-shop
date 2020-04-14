@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//js 动态语言  特性  神说有光便有光
+			var user=new Object();
+			user.username="小明";
+			//alert(user.username);
+			user.age=18;
+			//alert(user.age);
+			//js中 为对象赋属性的时候 属性的名字是字符串的话 通过 "."操作符
+			//我就想给我的user对象指明一个属性 属性的名字我就叫做1 行不行
+			//如果特殊的符号比如数字类型 那么可以[] 操作符 而且普通的字符串类型属性 []操作可以使用 .操作符更加方便
+			user[1]="xxx";
+			//alert(user[1]);
+			//alert(user["username"]);
+			
+			//声明一个对象 更加简写 的方式
+			var dog={};//空对象
+			
+			dog.name="旺财";
+			//alert(dog.name);
+			
+			//给对象赋值一个方法
+			dog.wangwang=function(){
+				alert("主人 我饿了 我要啃骨头")
+			}
+			
+			//dog.wangwang();
+			
+			var xiaohu={
+				name:"户有福",
+				singe:function(){
+					alert("唱歌......")
+				}
+			}
+			
+			//xiaohu.singe()
+			
+			
+			
+			
+			
+			//对象
+			var x=new Object();
+			x.name="小明";
+			x.age=18;
+			
+			for(key in x){
+				alert(x[key])
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

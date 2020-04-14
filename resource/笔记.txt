@@ -1,0 +1,70 @@
+商城案例:
+	用户模块
+	商品模块
+	购物车模块
+	订单模块
+	在线支付
+	后台管理模块
+表关系:
+	用户表
+	商品表
+	商品分类表
+	订单表
+
+
+	用户表 订单表  一对多
+	商品分类表 商品表 一对多
+	订单 商品表  多对多
+
+///////////////////////////////
+域名:
+	注册域名 
+		一级域名 是需要付费
+
+		baidu.com
+		jd.com
+
+
+
+		www.baidu.com
+		tieba.baidu.com
+
+		一般情况下 企业 吧www这个二级域名 作为首选域
+//////////////////////////////
+现在开始编写数据接口
+	做用户模块功能:以前写法
+		loginServlet----/login
+		registServlet---/regist
+		logoutServlet---/logout
+	做用户模块功能:现在写法
+		loginServlet----/login
+		registServlet---/regist
+		logoutServlet---/logout
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

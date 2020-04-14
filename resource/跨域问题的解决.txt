@@ -1,0 +1,50 @@
+跨域问题解决分为两部分
+
+
+
+1.在前端js中解决跨域问题:
+		原生js的api中:
+			//创建核心ajax引擎对象
+			var xhr = new XMLHttpRequest();
+			//表明请求地址
+			xhr.open('GET', 'http://example.com/', true);
+			//允许接受从服务器端返回的cookie信息 ,默认值为false 也就是说如果必须设置为true的时候 才可以接受cookie
+			xhr.withCredentials = true;
+			//发送请求
+			xhr.send(null);
+			
+
+
+		jQuery的api中:
+			$.ajax({
+				url : 'http://remote.domain.com/corsrequest',
+				data : data,
+				dataType: 'json',
+				type : 'POST',
+				xhrFields: {
+				//允许接受从服务器端返回的cookie信息 ,默认值为false 也就是说如果必须设置为true的时候 才可以接受cookie 并且请求带上
+				    withCredentials: true
+				},
+				success:function(data,statuscode,xhr){
+					//业务逻辑
+				}
+				});
+
+
+
+2.在后端服务器中解决跨域问题:
+	可以编写一个允许跨域访问的filter:
+
+		HttpServletResponse response= (HttpServletResponse) resp;
+		HttpServletRequest request= (HttpServletRequest) req;
+		//获取请求的来源网站
+		String origin = request.getHeader("Origin");
+		//允许你访问我 但是不允许设置cookie
+		response.setHeader("Access-Control-Allow-Origin",origin);
+		//允许浏览器发送cookie
+		response.setHeader("Access-Control-Allow-Credentials","true");
+
+		//以上两者都设置才可以保证我们外部域的ajax请求 正常访问 包括设置cookie
+
+	
+	

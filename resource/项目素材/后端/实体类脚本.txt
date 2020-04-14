@@ -1,0 +1,71 @@
+用户字段
+    
+    private String uid;//用户id
+    private String username;
+    private String password;
+    private String name;
+    private String email;
+    private Date birthday;
+    private String gender;
+    private int state;//激活状态  0未激活 1已激活
+    private String code;//激活码
+    private String remark;//扩展字段
+
+
+分类字段
+
+    private String cid;
+    private String cname;
+
+
+商品字段
+
+    private String pid;//id
+    private String pname;//名字
+    private Double market_price;//市场价
+
+    private Double shop_price;//商城价
+    private String pimage;//图片
+    private Date pdate;//日期
+
+    private Integer is_hot;  //是否热门  1:热门    0:不热门
+    private String pdesc;//描述
+    private Integer pflag;	//是否下架    1:下架	0:未下架
+    private String cid;
+
+
+
+订单字段
+
+    // 订单id
+    private String oid;
+    // 订单时间
+    private Date ordertime;
+    // 订单金额
+    private Double total;
+    // 订单状态
+    private Integer state;// 订单状态 0:未付款 1:已付款 2:已发货 3.已完成
+    // 收获地址
+    private String address;
+    // 收货人姓名
+    private String name;
+    // 收获人电话
+    private String telephone;
+    private String uid;
+
+
+订单项字段
+
+	    //订单项数量
+	    private Integer count;
+	    //订单项小计
+	    private Double subTotal;
+	    private String pid;
+	    private String oid;
+
+
+
+
+
+
+

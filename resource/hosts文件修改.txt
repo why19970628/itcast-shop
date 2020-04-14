@@ -1,0 +1,7 @@
+进入该目录
+	C:\Windows\System32\drivers\etc
+
+打开hosts文件
+	新增记录
+	127.0.0.1       www.itheima67.com
+	127.0.0.1       api.itheima67.com
