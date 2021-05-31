@@ -1,0 +1,8 @@
+# Auto detect text files and perform LF normalization
+*.js linguist-language=java
+*.css linguist-language=java
+*.html linguist-language=java
+*.sql linguist-language=java
+*.csv linguist-language=java
+*.txt linguist-language=java
+*.json linguist-language=java
